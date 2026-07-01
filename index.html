@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><style>body{background:#000;color:#0f0;font-family:monospace;padding:20px;}</style></head>
+<body>
+    <div id="out"></div><input id="in" placeholder="> ">
+    <script>
+        const i=document.getElementById('in'), o=document.getElementById('out');
+        i.onkeypress=async(e)=>{
+            if(e.key==='Enter'){
+                const res=await fetch('/query',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:i.value})});
+                const d=await res.json();
+                o.innerHTML+=`<div>> ${i.value}</div><div style="color:#fff">${d.output}</div>`;
+                i.value='';
+            }
+        }
+    </script>
+</body>
+</html>
