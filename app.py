@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__, static_folder='static')
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("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"))
 
 @app.route('/')
 def index():
